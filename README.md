@@ -1,12 +1,11 @@
 # Vier Gewinnt
 
 > [!NOTE]
-> Studium: Einsendeaufgabe CODIH02-XX01-N01
+> Studienaufgabe zu CODIH02-XX01-N01
 
-Aufgabenstellung:
 ```
-„Vier gewinnt“ ist ein Brettspiel für zwei Personen. 
-Das Spiel besteht aus einem Spielfeld mit 6 Zeilen und 7 Spalten sowie 42 Spielsteinen in zwei Farben. 
+„Vier gewinnt“ ist ein Brettspiel für zwei Personen. Das Spiel besteht aus einem Spielfeld 
+mit 6 Zeilen und 7 Spalten sowie 42 Spielsteinen in zwei Farben. 
 Alle Mitspielenden erhalten jeweils 21 Steine in der gleichen Farbe. 
 Ziel des Spiels ist es, vier Steine der gleichen Farbe in einer Zeile, 
 einer Spalte oder diagonal anzuordnen (siehe auch https://de.wikipedia.org/wiki/Vier_gewinnt).
@@ -37,7 +36,8 @@ der Instanzvariable zurückgibt.
 c) Die Klasse Player benötigt zwei private Instanzvariablen, einen String für den Namen 
 und eine Variable vom Typ Token für die Spielsteine der Spielerin bzw. des Spielers. 
 Ergänzen Sie weiterhin einen Konstruktor mit zwei Parametern vom Typ String und Token, 
-der die Instanzvariablen damit initialisiert, sowie zwei Getter-Methoden für die beiden Variablen.
+der die Instanzvariablen damit initialisiert, 
+sowie zwei Getter-Methoden für die beiden Variablen.
 
 d) Die Klasse GameBoard besitzt eine private Instanzvariable für ein zweidimensionales Feld 
 vom Typ Token. Legen Sie zwei öffentliche, statische Konstanten ROWS und COLS für die Anzahl 
@@ -94,4 +94,6 @@ g) Die Klasse Main enthält eine main-Methode für den Programmstart. Lesen Sie 
 main-Methode die beiden Namen der Mitspielenden ein, erzeugen Sie damit eine Instanz 
 der Klasse ConsoleGame und starten Sie dann das Spiel durch den Aufruf der Methode play.
 ```
-- Kohlmüller, N. (2022). Objektorientierte Programmierung. CODIH02, Europäische Fernhochschule Hamburg.
+(Kohlmüller, N. (2022). Objektorientierte Programmierung. CODIH02, Europäische Fernhochschule Hamburg.)
+
+Zeilenumbrüche zur besseren Lesbarkeit hinzugefügt.
