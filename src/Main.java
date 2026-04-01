@@ -1,19 +1,24 @@
+import java.util.Scanner;
+
 public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanInput = new Scanner(System.in);
+        String namePlayer1;
+        String namePlayer2;
+
+        //die beiden Namen der Mitspielenden einlesen
+        System.out.print("Name Spieler 1: ");
+        namePlayer1 = String.valueOf(scanInput.nextLine());
+        System.out.print("Name Spieler 2: ");
+        namePlayer2 = String.valueOf(scanInput.nextLine());
 
 
+        //erzeugen Sie damit eine Instanz der Klasse ConsoleGame und
+
+
+        //starten Sie dann das Spiel durch den Aufruf der Methode play.
+
+
+    }
 }
-/**
- * „Vier gewinnt“ ist ein Brettspiel für zwei Personen.
- * Spielfeld mit 6 Zeilen und 7 Spalten sowie 42 Spielsteinen in zwei Farben.
- * Alle Mitspielenden erhalten jeweils 21 Steine in der gleichen Farbe.
- * Ziel des Spiels ist es, vier Steine der gleichen Farbe in einer Zeile,
- * einer Spalte oder diagonal anzuordnen
- *
- * - Klasse Main mit einer main-Methode für den Programmstart
- *
- * g) Die Klasse Main enthält eine main-Methode für den Programmstart. Lesen Sie in der
- * main-Methode die beiden Namen der Mitspielenden ein, erzeugen Sie damit eine Instanz
- * der Klasse ConsoleGame und starten Sie dann das Spiel durch den Aufruf der Methode play.
- * ```
- *
- */

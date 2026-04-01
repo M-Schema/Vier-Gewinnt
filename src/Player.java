@@ -1,9 +1,20 @@
 public class Player {
+
+    private String name;
+    //private Token<int> token;
+
+    public Player(String name) {
+        //, Token<int> token) {
+        this.name = name;
+        //this.token = token;
+    }
+
+    public String getName() {
+        return name;
+    }
+/*
+    public Token<int> getToken() {
+        return token;
+    }
+*/
 }
-/**
- * - Klasse Player für eine Spielerin bzw. einen Spieler
- * c) Die Klasse Player benötigt zwei private Instanzvariablen, einen String für den Namen
- * und eine Variable vom Typ Token für die Spielsteine der Spielerin bzw. des Spielers.
- * Ergänzen Sie weiterhin einen Konstruktor mit zwei Parametern vom Typ String und Token,
- * der die Instanzvariablen damit initialisiert, sowie zwei Getter-Methoden für die beiden Variablen.
- */
