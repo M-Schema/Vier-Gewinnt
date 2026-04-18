@@ -2,7 +2,7 @@
 
 Ziel des Spiels ist es, vier Steine der gleichen Farbe
 in einer Zeile, einer Spalte oder diagonal anzuordnen 
-mit 42 Spielsteinen (6*7 oder 2*21).
+mit 42 Spielsteinen (6x7 oder 2x21).
 
 ## f) Klasse ConsoleGame
 - play()
