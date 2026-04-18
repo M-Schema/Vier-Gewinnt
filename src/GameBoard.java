@@ -1,35 +1,50 @@
 public class GameBoard {
+    public static final int ROWS = 6, COLS = 7;
+    private final Token[][] board;
 
-    //private Instanzvariable für ein zweidimensionales Feld vom Typ Token
+    public GameBoard() {
+        board = new Token[ROWS][COLS];
 
-    // zwei öffentliche, statische Konstanten ROWS und COLS; Spielfeld mit 6 Zeilen und 7 Spalten
+        System.out.println("board");
+    }
 
-    //erzeugen Sie damit das Spielfeld
+    public Token getToken(int row, int col) throws GameException {
+        try {
+            System.out.println("getToken");
 
-    //Implementieren Sie dann in der Klasse die folgenden Instanzmethoden:
-    //Methode getToken besitzt zwei Parameter vom Typ int für den Zeilenindex (von 1 bis ROWS)
-    //und den Spaltenindex (von 1 bis COLS) und gibt den Spielstein in der Zeile und Spalte zurück.
+            return board[row - 1][col - 1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new GameException("Ungültiger Index: Zeile " + row + ", Spalte " + col);
+        }
+    }
 
-    //Ist ein Index ungültig, dann wird eine Ausnahme vom Typ GameException ausgeworfen.
+    public void drop(int col, Player player) throws GameException {
+        try {
+            System.out.println("drop");
 
-//Die Methode drop hat keinen Rückgabewert und erhält einen Parameter vom Typ int
-//und einen Parameter vom Typ Player.
+            for (int row = ROWS; row >= 1; row--) {
+                if (board[row - 1][col - 1] == null) {
+                    board[row - 1][col - 1] = player.getToken();
+                    return;
+                }
+            }
+            throw new GameException("Spalte " + col + " ist voll.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new GameException("Ungültige Spalte " + col);
+        }
+    }
 
-//Der erste Parameter gibt die Spaltennummer als Wert zwischen 1 und COLS an.
-
-//Speichern Sie in der zugehörigen Spalte im ersten freien Platz
-//einen Spielstein von der Spielerin bzw. dem Spieler im zweiten Parameter.
-
-
-//Ist der Spaltenindex ungültig oder in der Spalte kein freies Feld vorhanden,
-//dann soll die Methode eine Ausnahme vom Typ GameException auswerfen.
-
-
+    public boolean finished() {
 //Die Methode finished hat keine Parameter und einen Rückgabewert vom Typ boolean.
 //Sie überprüft, ob eine Spielerin oder ein Spieler das Spiel gewonnen hat,
 //und gibt in diesem Fall den Wert true zurück. Durchlaufen Sie dazu alle Zeilen und Spalten
 //des Feldes und prüfen Sie für jede Position, ob die folgenden drei Felder die gleiche
 //Farbe haben wie das aktuelle Feld. Sie müssen dazu vier Richtungen nach oben, nach rechts,
 //diagonal nach links-oben und diagonal nach rechts-oben untersuchen.
+
+
+        System.out.println("finished");
+        return false; //mock
+    }
 
 }

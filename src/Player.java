@@ -1,20 +1,24 @@
 public class Player {
+    private String namePlayer;
+    private Token token;
 
-    private String name;
-    //private Token<int> token;
+    public Player(String namePlayer, Token token) {
+        this.namePlayer = namePlayer;
+        this.token = token;
 
-    public Player(String name) {
-        //, Token<int> token) {
-        this.name = name;
-        //this.token = token;
+        System.out.println("player");
     }
 
     public String getName() {
-        return name;
+        System.out.println("getName");
+
+        return namePlayer;
     }
-/*
-    public Token<int> getToken() {
+
+    public Token getToken() {
+        System.out.println("getToken");
+
         return token;
     }
-*/
+
 }
