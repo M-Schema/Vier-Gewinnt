@@ -1,46 +1,101 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
 public class ConsoleGame extends Game {
 
     public ConsoleGame(String namePlayer1, String namePlayer2) {
         super(namePlayer1, namePlayer2);
-
-        System.out.println("ConsoleGame");
     }
 
     @Override
-    public void play(){
-// Die Methode play ist für den Spielablauf zuständig. Führen Sie hier die Spielrunden
-// aus, indem Sie abwechselnd die Mitspielenden auffordern, eine Spaltennummer
-// einzugeben und einen Wert von der Konsole einzulesen. Fügen Sie mithilfe der
-// Methode drop einen Spielstein der Spielerin bzw. des Spielers in der Eingabespalte
-// ein und zeichnen Sie anschließend das Spielfeld mithilfe der Methode printBoard.
-// Fangen Sie dabei die Exceptions, die durch eine falsche Eingabe entstehen,
-// auf und wiederholen Sie in diesem Fall die Konsoleneingabe. Prüfen Sie nach einer
-// gültigen Eingabe mithilfe der Methode finished, ob das Spiel beendet ist, und geben
-// Sie in diesem Fall die Siegerin oder den Sieger mithilfe der Methode printWinner aus.
-// Falls alle Spielrunden ohne Siegerin oder Sieger durchlaufen wurden, wird zum Schluss
-// die Methode printWinner mit dem Wert null ausgeführt.
+    public void play() throws GameException {
+        int round = 0;
+        int inputCol;
+        Player currentPlayer = players[round % 2];
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("play");
+        while (!board.finished() && round < (board.ROWS * board.COLS)) {
+            currentPlayer = players[round % 2];
+
+            System.out.print("\n*********** \n"
+                    + "Runde " + (round + 1)
+                    + ". Spieler " + currentPlayer.getName()
+                    + ", wählen Sie eine Spaltennummer (1-" + board.COLS + "): ");
+
+            try {
+                inputCol = Integer.parseInt(scanner.nextLine());
+                board.drop(inputCol, currentPlayer);
+                printBoard();
+
+                round++;
+
+            } catch (GameException e) {
+                System.out.println("Ungültige Eingabe: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Bitte eine Zahl zwischen 1 und 7 eingeben.");
+            } catch (InputMismatchException e) {
+                throw new GameException("Falsche Eingabe!");
+            }
+        }
+
+        if (board.finished()) {
+            printWinner(currentPlayer);
+        } else if (round >= (board.ROWS * board.COLS)) {
+            printWinner(null);
+        }
     }
 
     @Override
     public void printBoard() throws GameException {
-// Die Methode printBoard gibt das
-// Spielfeld auf der Konsole aus. Über und unter dem Spielfeld sollen die Spaltennummern
-// von 1 bis COLS ausgegeben werden. Geben Sie dabei die gelben Spielsteine als ‚x‘ und
-// die roten Spielsteine als ‚o‘ aus. Ausnahmen vom Typ GameException sollen von der
-// Methode nicht gefangen werden.
+        String divider = "  |  ";
+        String boardHeader = divider + "";
 
-        System.out.println("printBoard");
+        System.out.println("Spielfeld: ");
+
+        for (int i = 1; i <= board.COLS; i++) {
+            boardHeader += i + divider;
+        }
+        System.out.println(boardHeader);
+
+/*
+        System.out.print("   ");
+        for (int i = 1; i <= board.COLS; i++) {
+            System.out.print(" === ");
+        }
+        System.out.print("   "+ "\n");
+*/
+
+
+        for (int i = 0; i < board.ROWS; i++) {
+            for (int j = 0; j < board.COLS; j++) {
+
+                System.out.print(divider);
+
+                Token currentToken = board.getToken(i, j);
+                if (currentToken == null) {
+                    System.out.print(" ");
+                } else if (currentToken.getColour() == Token.YELLOW) {
+                    System.out.print("x");
+                } else if (currentToken.getColour() == Token.RED) {
+                    System.out.print("o");
+                }
+            }
+
+            System.out.println(divider);
+        }
+
+        System.out.println(boardHeader); // as footer
+
     }
 
     @Override
     public void printWinner(Player player) {
-// Die Methode printWinner erhält eine Variable vom
-// Typ Player und gibt den Namen der Spielerin oder des Spielers als Gewinnerin bzw.
-// Gewinner auf der Konsole aus. Ist der Parameter null, dann endet das Spiel unentschieden.
+        if (player != null) {
+            System.out.println(player.getName() + " hat gewonnen!");
+        } else {
+            System.out.println("Unentschieden! Niemand hat gewonnen!");
+        }
 
-        System.out.println("printWinner");
     }
 
 }
