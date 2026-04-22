@@ -4,13 +4,10 @@ public class Token {
 
     public Token(int colour) {
         this.colour = colour;
-
-        System.out.println("Token");
     }
 
     public int getColour() {
-        System.out.println("getColour");
-
         return colour;
     }
+
 }

@@ -4,15 +4,11 @@ public class GameBoard {
 
     public GameBoard() {
         board = new Token[ROWS][COLS];
-
-        System.out.println("board");
     }
 
     public Token getToken(int row, int col) throws GameException {
         try {
-            System.out.println("getToken");
-
-            return board[row - 1][col - 1];
+            return board[row][col];
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new GameException("Ungültiger Index: Zeile " + row + ", Spalte " + col);
         }
@@ -20,11 +16,9 @@ public class GameBoard {
 
     public void drop(int col, Player player) throws GameException {
         try {
-            System.out.println("drop");
-
-            for (int row = ROWS; row >= 1; row--) {
-                if (board[row - 1][col - 1] == null) {
-                    board[row - 1][col - 1] = player.getToken();
+            for (int i = ROWS; i >= 1; i--) {
+                if (board[i - 1][col - 1] == null) {
+                    board[i - 1][col - 1] = player.getToken();
                     return;
                 }
             }
@@ -43,7 +37,7 @@ public class GameBoard {
 //diagonal nach links-oben und diagonal nach rechts-oben untersuchen.
 
 
-        System.out.println("finished");
+        //System.out.println("finished");
         return false; //mock
     }
 
