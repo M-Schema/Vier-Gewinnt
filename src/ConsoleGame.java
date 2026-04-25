@@ -48,23 +48,14 @@ public class ConsoleGame extends Game {
     @Override
     public void printBoard() throws GameException {
         String divider = "  |  ";
-        String boardHeader = divider + "";
+        String boardHeader = "";
 
         System.out.println("Spielfeld: ");
 
         for (int i = 1; i <= board.COLS; i++) {
-            boardHeader += i + divider;
+            boardHeader += "     " + i;
         }
         System.out.println(boardHeader);
-
-/*
-        System.out.print("   ");
-        for (int i = 1; i <= board.COLS; i++) {
-            System.out.print(" === ");
-        }
-        System.out.print("   "+ "\n");
-*/
-
 
         for (int i = 0; i < board.ROWS; i++) {
             for (int j = 0; j < board.COLS; j++) {
