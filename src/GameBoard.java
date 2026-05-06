@@ -31,7 +31,7 @@ public class GameBoard {
     public boolean finished() {
         Token token;
 
-        // --- nach oben ---
+        // --- nach unten ---
         for (int row = 0; row < ROWS - 3; row++) {
             for (int col = 0; col < COLS; col++) {
                 token = board[row][col];
@@ -57,20 +57,7 @@ public class GameBoard {
             }
         }
 
-        // --- diagonal links-oben ---
-        for (int row = 0; row < ROWS - 3; row++) {
-            for (int col = 3; col < COLS; col++) {
-                token = board[row][col];
-                if (token != null
-                        && board[row+1][col-1] != null && board[row+1][col-1].getColour() == token.getColour()
-                        && board[row+2][col-2] != null && board[row+2][col-2].getColour() == token.getColour()
-                        && board[row+3][col-3] != null && board[row+3][col-3].getColour() == token.getColour()) {
-                    return true;
-                }
-            }
-        }
-
-        // --- diagonal rechts-oben ---
+        // --- diagonal rechts-unten ---
         for (int row = 0; row < ROWS - 3; row++) {
             for (int col = 0; col < COLS - 3; col++) {
                 token = board[row][col];
@@ -82,6 +69,20 @@ public class GameBoard {
                 }
             }
         }
+
+        // --- diagonal rechts-oben ---
+        for (int row = 3; row < ROWS; row++) {
+            for (int col = 0; col < COLS - 3; col++) {
+                token = board[row][col];
+                if (token != null
+                        && board[row-1][col+1] != null && board[row-1][col+1].getColour() == token.getColour()
+                        && board[row-2][col+2] != null && board[row-2][col+2].getColour() == token.getColour()
+                        && board[row-3][col+3] != null && board[row-3][col+3].getColour() == token.getColour()) {
+                    return true;
+                }
+            }
+        }
+
 
         return false;
     }
